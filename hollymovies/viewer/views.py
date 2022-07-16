@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Movie
 
 
 
@@ -16,6 +17,10 @@ def hello(request):
 def movies(request, s):
     client_data = request.GET
     name = client_data.get('name')
+
+    movies = Movie.objects.all()
+
+    print(movies)
 
     if s in movies_database:
         info = movies_database[s]
