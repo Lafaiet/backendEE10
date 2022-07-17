@@ -30,3 +30,15 @@ def movies(request, s):
             return HttpResponse(f'Hello {name}. {info}')
     else:
         return HttpResponse('Movie not found!')
+
+
+def database_movies(request):
+    movies_data = Movie.objects.all()
+
+    context = {
+        'movies_data': movies_data
+    }
+
+    return render(request, 'movies.html', {
+        'movies_data': movies_data
+    })
